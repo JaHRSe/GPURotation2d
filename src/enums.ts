@@ -1,0 +1,3 @@
+export const EVENTS = {
+  ROTATECLICK2D: "ROTATECLICK2D",
+};
