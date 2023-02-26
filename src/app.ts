@@ -1,6 +1,6 @@
 import { MatrixRotationComponent } from "./matrixRotation/matrixRotationComponent";
 import { GPUMatrixComponent } from "./GPUMatrixRotation/GPUMatrixRotationComponent";
-import { ImaginaryRotationComponent } from "./ImaginaryNumRotation/ImaginaryRotationComponent";
+import { complexRotationComponent } from "./complexNumRotation/complexRotationComponent";
 import { Controls } from "./Controls";
 
 import "./styles.css";
@@ -10,7 +10,7 @@ function component() {
   container.className = "container";
   container.appendChild(MatrixRotationComponent);
   container.appendChild(GPUMatrixComponent);
-  container.appendChild(ImaginaryRotationComponent);
+  container.appendChild(complexRotationComponent);
   container.appendChild(Controls);
   return container;
 }

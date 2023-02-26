@@ -15,6 +15,7 @@ function complexRotate2d(angleInRadians: number, geometry: Float32Array) {
   while (i < geometry.length) {
     const x = geometry[i];
     const y = geometry[i + 1];
+    //https://betterexplained.com/articles/a-visual-intuitive-guide-to-complex-numbers/
     const result = multiply(
       complex(x, y),
       complex(Math.cos(angleInRadians), -Math.sin(angleInRadians))

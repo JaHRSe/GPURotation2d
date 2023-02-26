@@ -1,11 +1,11 @@
-import { animate } from "./imaginaryNumRotation";
+import { animate } from "./complexNumRotation";
 
-function ImaginaryRotationComponent() {
+function complexRotationComponent() {
   const heading = document.createElement("h3");
-  heading.innerHTML = "Imaginary number rotation";
+  heading.innerHTML = "complex number rotation";
 
   const p = document.createElement("p");
-  p.innerText = "Use Imaginary Numbers to Calculate Rotation";
+  p.innerText = "Use complex Numbers to Calculate Rotation";
 
   const canvas = document.createElement("canvas");
   canvas.width = 300;
@@ -23,5 +23,5 @@ function ImaginaryRotationComponent() {
   return div;
 }
 
-const comp = ImaginaryRotationComponent();
-export { comp as ImaginaryRotationComponent };
+const comp = complexRotationComponent();
+export { comp as complexRotationComponent };
