@@ -1,6 +1,6 @@
 import { animate } from "./GPUMatrixRotation";
 
-export function GPUMatrixComponent() {
+function GPUMatrixComponent() {
   const heading = document.createElement("h3");
   heading.innerHTML = "GPU Matrix Rotation";
 
@@ -22,3 +22,6 @@ export function GPUMatrixComponent() {
   animate(gl);
   return div;
 }
+
+const comp = GPUMatrixComponent();
+export { comp as GPUMatrixComponent };

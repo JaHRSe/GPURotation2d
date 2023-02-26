@@ -23,7 +23,7 @@ function angleButton(inputRef: HTMLInputElement) {
   return ab;
 }
 
-export function controls() {
+function controls() {
   const controlDiv = document.createElement("div");
   const label = document.createElement("label");
   label.innerText = "Rotation Angle:";
@@ -36,3 +36,6 @@ export function controls() {
   controlDiv.appendChild(ab);
   return controlDiv;
 }
+
+const comp = controls();
+export { comp as Controls };

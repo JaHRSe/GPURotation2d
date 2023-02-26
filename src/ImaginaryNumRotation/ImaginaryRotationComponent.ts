@@ -1,6 +1,6 @@
 import { animate } from "./imaginaryNumRotation";
 
-export function ImaginaryRotationComponent() {
+function ImaginaryRotationComponent() {
   const heading = document.createElement("h3");
   heading.innerHTML = "Imaginary number rotation";
 
@@ -22,3 +22,6 @@ export function ImaginaryRotationComponent() {
   animate(gl);
   return div;
 }
+
+const comp = ImaginaryRotationComponent();
+export { comp as ImaginaryRotationComponent };

@@ -1,6 +1,6 @@
 import { animate } from "./matrixRotation";
 
-export function MatrixRotationComponent() {
+function MatrixRotationComponent() {
   const heading = document.createElement("h3");
   heading.innerHTML = "Matrix rotation";
 
@@ -22,3 +22,6 @@ export function MatrixRotationComponent() {
   animate(gl);
   return div;
 }
+
+const comp = MatrixRotationComponent();
+export { comp as MatrixRotationComponent };
