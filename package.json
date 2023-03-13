@@ -27,6 +27,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "mathjs": "^11.5.1"
+    "mathjs": "^11.5.1",
+    "radial-control": "^1.0.5"
   }
 }

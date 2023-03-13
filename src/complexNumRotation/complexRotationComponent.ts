@@ -18,7 +18,6 @@ function complexRotationComponent() {
   div.appendChild(heading);
   div.appendChild(p);
   div.appendChild(canvas);
-
   animate(gl);
   return div;
 }

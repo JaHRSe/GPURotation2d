@@ -2,9 +2,8 @@
 Uses GPU for cosine and sine calculation to 2D create rotation matrix
 ***********************************************************************
   `;
-import { pubSub } from "../../pubSub";
 import { EVENTS } from "../enums";
-import { degreesToRadians, getRandomColor } from "../utils";
+import { getRandomColor } from "../utils";
 import { createProgram, translationMatrix, translation } from "../gpuUtils";
 import { gpuMatrixVertexSource } from "./GPUMatrixVertexSource";
 import { basicFragmentShaderSource } from "../../basicFragmentShaderSource";
@@ -56,8 +55,8 @@ export function animate(gl: WebGL2RenderingContext) {
     offset
   );
 
-  pubSub.subscribe(EVENTS.ROTATECLICK2D, (data) => {
-    angleInRadians = degreesToRadians(data);
+  document.addEventListener(EVENTS.CONTROL_WHEEL_ROTATE, (ev) => {
+    angleInRadians = (<CustomEvent>ev).detail;
     drawSceneCall();
   });
 

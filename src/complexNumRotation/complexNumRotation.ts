@@ -3,9 +3,7 @@ import { getRandomColor } from "../utils";
 import { basicVertexShaderSource } from "../../basicVertexShaderSource";
 import { basicFragmentShaderSource } from "../../basicFragmentShaderSource";
 import { createProgram, translationMatrix, translation } from "../gpuUtils";
-import { pubSub } from "../../pubSub";
 import { EVENTS } from "../enums";
-import { degreesToRadians } from "../utils";
 import { flatten } from "mathjs";
 import { F2d } from "../F2d";
 
@@ -30,6 +28,11 @@ function complexRotate2d(angleInRadians: number, geometry: Float32Array) {
 }
 
 export function animate(gl: WebGL2RenderingContext) {
+  document.addEventListener(EVENTS.CONTROL_WHEEL_ROTATE, (ev) => {
+    angleInRadians = (<CustomEvent>ev).detail;
+    drawSceneCall();
+  });
+
   let angleInRadians = 0;
   const color = getRandomColor();
 
@@ -68,11 +71,6 @@ export function animate(gl: WebGL2RenderingContext) {
     offset
   );
 
-  pubSub.subscribe(EVENTS.ROTATECLICK2D, (data) => {
-    angleInRadians = degreesToRadians(data);
-    drawCall();
-  });
-
   gl.useProgram(program);
   gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
   gl.uniform4fv(colorUniformLocation, color);
@@ -81,9 +79,9 @@ export function animate(gl: WebGL2RenderingContext) {
     translationMatrix(translation[0], translation[1])
   ) as unknown as Float32List;
   gl.uniformMatrix3fv(matrixLocation, false, matrix);
-  const drawCall = () =>
+  const drawSceneCall = () =>
     drawScene(gl, angleInRadians, positionBuffer, positionAttributeLocation);
-  drawCall();
+  drawSceneCall();
 }
 
 function drawScene(

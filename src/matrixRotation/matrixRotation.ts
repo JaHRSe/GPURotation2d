@@ -3,13 +3,16 @@ import { getRandomColor } from "../utils";
 import { createProgram } from "../gpuUtils";
 import { basicFragmentShaderSource } from "../../basicFragmentShaderSource";
 import { basicVertexShaderSource } from "../../basicVertexShaderSource";
-import { pubSub } from "../../pubSub";
 import { EVENTS } from "../enums";
-import { degreesToRadians } from "../utils";
 import { multiply, flatten } from "mathjs";
 import { rotationMatrix, translationMatrix, translation } from "../gpuUtils";
 
 export function animate(gl: WebGL2RenderingContext) {
+  document.addEventListener(EVENTS.CONTROL_WHEEL_ROTATE, (ev) => {
+    angleInRadians = (<CustomEvent>ev).detail;
+    drawSceneCall();
+  });
+
   let angleInRadians = 0;
   const color = getRandomColor();
   const program = createProgram(
@@ -48,11 +51,6 @@ export function animate(gl: WebGL2RenderingContext) {
     stride,
     offset
   );
-
-  pubSub.subscribe(EVENTS.ROTATECLICK2D, (data: number) => {
-    angleInRadians = degreesToRadians(data);
-    drawSceneCall();
-  });
 
   const drawSceneCall = () => drawScene(gl, angleInRadians, matrixLocation);
 
